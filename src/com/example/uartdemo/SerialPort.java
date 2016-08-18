@@ -24,7 +24,7 @@ import java.io.FileDescriptor;
  * @author li
  *
  */
-public class SerialPort
+public final class SerialPort
 {
 	// 加载本地.so类库
 	static
@@ -37,6 +37,7 @@ public class SerialPort
 	 * JNI关闭串口操作
 	 * 
 	 * @param port
+	 *            端口
 	 */
 	public native static void close(int port);
 
@@ -44,11 +45,16 @@ public class SerialPort
 	 * JNI打开串口操作
 	 * 
 	 * @param port
+	 *            端口
 	 * @param baudrate
-	 * @return
+	 *            波特率
+	 * @return 串口句柄
 	 */
 	public native static FileDescriptor open(int port, int baudrate);
 
+	/**
+	 * VDD 3.3v开关
+	 */
 	public native static void power3v3off();
 
 	/**
@@ -60,6 +66,7 @@ public class SerialPort
 	 * 设置GPIO高电平
 	 * 
 	 * @param pin
+	 *            端口
 	 */
 	public native static void setGpioHigh(int pin);
 
@@ -67,13 +74,11 @@ public class SerialPort
 	 * 设置GPIO低电平
 	 * 
 	 * @param pin
+	 *            端口
 	 */
 	public native static void setGpioLow(int pin);
 
-	/**
-	 * 
-	 */
-	public SerialPort()
+	private SerialPort()
 	{
 
 	}

@@ -8,7 +8,6 @@ import java.io.FileDescriptor;
  */
 public final class SerialPort
 {
-
 	// 加载本地.so类库
 	static
 	{
@@ -24,10 +23,14 @@ public final class SerialPort
 	 * JNI配置串口操作
 	 * 
 	 * @param baudrate
+	 *            波特率
 	 * @param nBits
+	 *            数据位
 	 * @param parity
+	 *            奇偶校验
 	 * @param nStop
-	 * @return
+	 *            停止位
+	 * @return 配置结果
 	 */
 	public native static int config(int baudrate, int nBits, int parity, int nStop);
 
@@ -35,11 +38,21 @@ public final class SerialPort
 	 * JNI打开串口操作
 	 * 
 	 * @param port
+	 *            串口
 	 * @param baudrate
+	 *            波特率
 	 * @param nBits
+	 *            数据位
 	 * @param parity
+	 *            奇偶校验
 	 * @param nStop
-	 * @return
+	 *            停止位
+	 * @return 串口句柄
 	 */
 	public native static FileDescriptor open(int port, int baudrate, int nBits, int parity, int nStop);
+
+	private SerialPort()
+	{
+
+	}
 }
